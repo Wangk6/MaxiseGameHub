@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtQuestionOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="Q1. How many states are in the United States?"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSubmitQuizOne"
+        style="@style/ButtonStyle"
+        android:layout_width="154dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/layout_buttoncurve"
+        android:onClick="SubmitBtnOnClick"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupQ1" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupQ1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuestionOne">
+
+        <RadioButton
+            android:id="@+id/btnQuizOneC1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:text="62"
+            android:textColor="#2196F3"
+            android:textSize="24dp" />
+
+        <RadioButton
+            android:id="@+id/btnQuizOneC2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:text="40"
+            android:textColor="#2196F3"
+            android:textSize="24dp" />
+
+        <RadioButton
+            android:id="@+id/btnQuizOneC3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:text="57"
+            android:textColor="#2196F3"
+            android:textSize="24dp" />
+
+        <RadioButton
+            android:id="@+id/btnQuizOneC4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="50"
+            android:textColor="#2196F3"
+            android:textSize="24dp" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

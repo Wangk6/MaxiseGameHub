@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg8_4_2500"
+    tools:context=".MainLoggedInActivity">
+
+    <Button
+        android:id="@+id/btnStart"
+        style="@style/ButtonStyle"
+        android:layout_width="230dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/layout_buttoncurve"
+        android:onClick="StartButtonOnClick"
+        android:text="Start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMaxiseText2" />
+
+    <ImageView
+        android:id="@+id/imgMaxiseLogo"
+        android:layout_width="210dp"
+        android:layout_height="182dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_transparent" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        style="@style/ButtonStyle"
+        android:layout_width="230dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/layout_buttoncurve"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHelp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnHelp"
+        android:layout_width="230dp"
+        android:layout_height="65dp"
+        style="@style/ButtonStyle"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/layout_buttoncurve"
+        android:text="Help"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHighScore" />
+
+    <TextView
+        android:id="@+id/txtMaxiseText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Maxise"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgMaxiseLogo" />
+
+    <Button
+        android:id="@+id/btnHighScore"
+        style="@style/ButtonStyle"
+        android:layout_width="230dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/layout_buttoncurve"
+        android:onClick="HighScoreButtonOnClick"
+        android:text="High Score"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

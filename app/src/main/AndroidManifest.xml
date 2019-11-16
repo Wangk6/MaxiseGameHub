@@ -11,9 +11,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainLoggedInActivity"></activity>
         <activity android:name=".MainLoggedInHelp"></activity>
-        <activity android:name=".MainLoggedInStart"></activity>
         <activity android:name=".MainLoggedInHighScore"></activity>
         <activity android:name=".MainLoggedInDifficulty"></activity>
+        <activity android:name=".LevelOne.LevelOneEpisodeOne"></activity>
         <activity
             android:name=".LoginScreenActivity"
             android:label="@string/title_activity_login_screen"

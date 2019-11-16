@@ -27,10 +27,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/LevelOne3" />
+            app:srcCompat="@drawable/levelone3" />
 
         <ImageView
-            android:id="@+id/masterball"
+            android:id="@+id/imageViewPlayer"
             android:layout_width="43dp"
             android:layout_height="39dp"
             android:layout_marginStart="276dp"

@@ -29,10 +29,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/LevelTwo2" />
+            app:srcCompat="@drawable/leveltwo2" />
 
         <ImageView
-            android:id="@+id/masterball"
+            android:id="@+id/imageViewPlayer"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="156dp"

@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.maxiselogin.LevelOne.LevelOneEpisodeOne;
+
 public class MainLoggedInDifficulty extends AppCompatActivity {
 
     Button lvlOne, lvlTwo, back;
@@ -22,7 +24,7 @@ public class MainLoggedInDifficulty extends AppCompatActivity {
         lvlOne.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainLoggedInDifficulty.this, MainLoggedInHelp.class);
+                Intent i = new Intent(MainLoggedInDifficulty.this, LevelOneEpisodeOne.class);
                 startActivity(i);
             }
         });
@@ -30,7 +32,7 @@ public class MainLoggedInDifficulty extends AppCompatActivity {
         lvlTwo.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainLoggedInDifficulty.this, MainLoggedInHelp.class);
+                Intent i = new Intent(MainLoggedInDifficulty.this, LevelOneEpisodeOne.class);
                 startActivity(i);
             }
         });

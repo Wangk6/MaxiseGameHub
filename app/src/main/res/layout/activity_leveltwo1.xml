@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg3_4_2500"
     android:screenOrientation="portrait"
+    android:background="@drawable/bg3_4_2500"
     tools:context=".LevelOneEpisodeOne">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,21 +27,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/LevelOne1" />
+            app:srcCompat="@drawable/LevelTwo1" />
 
         <ImageView
             android:id="@+id/masterball"
             android:layout_width="43dp"
             android:layout_height="39dp"
             android:layout_marginStart="304dp"
-            android:layout_marginTop="183dp"
-            android:layout_marginBottom="346dp"
-            app:layout_constraintBottom_toBottomOf="@+id/map"
+            android:layout_marginTop="272dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.14"
+            app:layout_constraintHorizontal_bias="0.234"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/map"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.276"
             app:srcCompat="@drawable/masterball" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

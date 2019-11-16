@@ -25,23 +25,20 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/LevelOne1" />
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/LevelTwo3" />
 
         <ImageView
             android:id="@+id/masterball"
-            android:layout_width="43dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="304dp"
-            android:layout_marginTop="183dp"
-            android:layout_marginBottom="346dp"
-            app:layout_constraintBottom_toBottomOf="@+id/map"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.14"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="60dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/map"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/masterball" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

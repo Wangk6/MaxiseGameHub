@@ -9,15 +9,30 @@ import android.widget.Button;
 
 public class MainLoggedInActivity extends AppCompatActivity {
 
-    Button logOut, help;
+    Button start, highScore, logOut, help;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_li_main_menu);
-
+        start = findViewById(R.id.btnStart);
+        highScore = findViewById(R.id.btnHighScore);
         logOut = findViewById(R.id.btnLogout);
         help = findViewById(R.id.btnHelp);
 
+        start.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainLoggedInActivity.this, MainLoggedInDifficulty.class);
+                startActivity(i);
+            }
+        });
+        highScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainLoggedInActivity.this, MainLoggedInHighScore.class);
+                startActivity(i);
+            }
+        });
         help.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -32,15 +47,5 @@ public class MainLoggedInActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-    }
-
-    public void StartButtonOnClick(View view) {
-        Intent i = new Intent(MainLoggedInActivity.this, MainLoggedInStart.class);
-        startActivity(i);
-    }
-
-    public void HighScoreButtonOnClick(View view) {
-        Intent i = new Intent(MainLoggedInActivity.this, MainLoggedInHighScore.class);
-        startActivity(i);
     }
 }

@@ -5,7 +5,7 @@
     android:id="@+id/mainView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg11_4_2500"
+    android:background="@drawable/bg3_4_2500"
     tools:context=".MainActivity">
 
     <ImageView
@@ -33,7 +33,7 @@
         android:layout_width="290dp"
         android:layout_height="45dp"
         android:layout_marginBottom="48dp"
-        android:text="Up Your Fitness Level"
+        android:text="Game Central"
         android:textAlignment="center"
         android:textColor="#FAFAFA"
         android:textSize="25dp"

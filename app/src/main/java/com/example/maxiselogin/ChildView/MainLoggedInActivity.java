@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.maxiselogin.BeforeLogin.LoginScreenActivity;
-import com.example.maxiselogin.MainLoggedInHelp;
+import com.example.maxiselogin.ParentView.MainLoggedInHelp;
 import com.example.maxiselogin.R;
 
 public class MainLoggedInActivity extends AppCompatActivity {

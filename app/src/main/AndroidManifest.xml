@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ParentView.MainLoggedInActivity"></activity>
-        <activity android:name=".MainLoggedInHelp"></activity>
+        <activity android:name=".ParentView.MainLoggedInHelp"></activity>
         <activity android:name=".ParentView.MainLoggedInHighScore"></activity>
         <activity android:name=".ParentView.MainLoggedInDifficulty"></activity>
         <activity android:name=".ChildView.LevelOne.LevelOneEpisodeOne"></activity>

@@ -38,6 +38,8 @@ public class LevelTwoEpisodeTwo extends AppCompatActivity{
     //Up - Left - Down - Left
     int [] correctSequenceTwo = new int[]{1, 0, 2, 0};
 
+    int playSequence;
+
     ImageView back;
 
     //Animation
@@ -73,6 +75,7 @@ public class LevelTwoEpisodeTwo extends AppCompatActivity{
         findViewById(R.id.firstStepImage).setOnDragListener(dragListener);
         findViewById(R.id.secondStepImage).setOnDragListener(dragListener);
         findViewById(R.id.thirdStepImage).setOnDragListener(dragListener);
+        findViewById(R.id.fourthStepImage).setOnDragListener(dragListener);
 
         //add or remove any view that you don't want to be dragged
         leftStep.setOnLongClickListener(longClickListener);
@@ -81,7 +84,6 @@ public class LevelTwoEpisodeTwo extends AppCompatActivity{
         downStep.setOnLongClickListener(longClickListener);
 
         Reset();
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -190,6 +192,7 @@ public class LevelTwoEpisodeTwo extends AppCompatActivity{
         firstStep.setImageDrawable(null);
         secondStep.setImageDrawable(null);
         thirdStep.setImageDrawable(null);
+        fourthStep.setImageDrawable(null);
     }
 
     //Used to see if the users sequence is correct
@@ -206,23 +209,16 @@ public class LevelTwoEpisodeTwo extends AppCompatActivity{
 
             //Get user sequence
             if(i == 0){
-                //step = findViewById(R.id.firstStepImage);
                 step = firstStep.getDrawable();
-                //step = ((BitmapDrawable)firstStep.getDrawable()).getBitmap();
             }
             else if(i == 1){
-                //step = findViewById(R.id.secondStepImage);
-
                 step = secondStep.getDrawable();
-
-                //step = ((BitmapDrawable)secondStep.getDrawable()).getBitmap();
             }
             else if(i == 2){
-                //step = findViewById(R.id.thirdStepImage);
-
                 step = thirdStep.getDrawable();
-
-                //step = ((BitmapDrawable)thirdStep.getDrawable()).getBitmap();
+            }
+            else if(i == 3){
+                step = fourthStep.getDrawable();
             }
             else{
                 step = null;
@@ -243,26 +239,61 @@ public class LevelTwoEpisodeTwo extends AppCompatActivity{
             }
         }
 
+        playSequence = Arrays.equals(userSequence, correctSequence) ? 1 : 2;
         return Arrays.equals(userSequence, correctSequence) || Arrays.equals(userSequence, correctSequenceTwo) ? true : false;
     }
 
     //Play the character movement animation
     private void PlayAnimation(){
-        ObjectAnimator rotateLeft = ObjectAnimator.ofFloat(player, "rotation", 270f);
-        rotateLeft.setDuration(100);
-        ObjectAnimator moveLeft = ObjectAnimator.ofFloat(player, "translationX", -470f);
-        moveLeft.setDuration(1000);
-        ObjectAnimator rotateUp = ObjectAnimator.ofFloat(player, "rotation", 180f);
-        rotateUp.setDuration(100);
-        ObjectAnimator moveUp = ObjectAnimator.ofFloat(player, "translationY", -970f);
-        moveUp.setDuration(1000);
-        ObjectAnimator rotateRight = ObjectAnimator.ofFloat(player, "rotation", 270f);
-        rotateUp.setDuration(100);
-        ObjectAnimator moveRight = ObjectAnimator.ofFloat(player, "translationX", -200);
-        moveRight.setDuration(1000);
+        if(playSequence == 1) {
+            //Down
+            ObjectAnimator moveDown = ObjectAnimator.ofFloat(player, "translationY", 250f);
+            moveDown.setDuration(1500);
+            //Left
+            ObjectAnimator rotateLeft = ObjectAnimator.ofFloat(player, "rotation", 90f);
+            rotateLeft.setDuration(100);
+            ObjectAnimator moveLeft = ObjectAnimator.ofFloat(player, "translationX", -370f);
+            moveLeft.setDuration(1500);
+            //Down
+            ObjectAnimator rotateDown = ObjectAnimator.ofFloat(player, "rotation", 0f);
+            rotateDown.setDuration(100);
+            ObjectAnimator moveDownTwo = ObjectAnimator.ofFloat(player, "translationY", 820f);
+            moveDownTwo.setDuration(1500);
+            //Left
+            ObjectAnimator rotateLeftTwo = ObjectAnimator.ofFloat(player, "rotation", 90f);
+            rotateLeftTwo.setDuration(100);
+            ObjectAnimator moveLeftTwo = ObjectAnimator.ofFloat(player, "translationX", -680f);
+            moveLeftTwo.setDuration(1500);
 
-        set  = new AnimatorSet();
-        set.playSequentially(rotateLeft, moveLeft, rotateUp, moveUp, rotateRight, moveRight);
-        set.start();
+            set = new AnimatorSet();
+            set.playSequentially(moveDown, rotateLeft, moveLeft, rotateDown, moveDownTwo, rotateLeftTwo, moveLeftTwo);
+            set.start();
+        }
+        else if(playSequence == 2) {
+            //Up
+            ObjectAnimator rotateUp = ObjectAnimator.ofFloat(player, "rotation", 180f);
+            rotateUp.setDuration(100);
+            ObjectAnimator moveDown = ObjectAnimator.ofFloat(player, "translationY", -75f);
+            moveDown.setDuration(1500);
+            //Left
+            ObjectAnimator rotateLeft = ObjectAnimator.ofFloat(player, "rotation", 90f);
+            rotateLeft.setDuration(100);
+            ObjectAnimator moveLeft = ObjectAnimator.ofFloat(player, "translationX", -370f);
+            moveLeft.setDuration(1500);
+            //Down
+            ObjectAnimator rotateDown = ObjectAnimator.ofFloat(player, "rotation", 0f);
+            rotateDown.setDuration(100);
+            ObjectAnimator moveDownTwo = ObjectAnimator.ofFloat(player, "translationY", 830f);
+            moveDownTwo.setDuration(1500);
+            //Left
+            ObjectAnimator rotateLeftTwo = ObjectAnimator.ofFloat(player, "rotation", 90f);
+            rotateLeftTwo.setDuration(100);
+            ObjectAnimator moveLeftTwo = ObjectAnimator.ofFloat(player, "translationX", -680f);
+            moveLeftTwo.setDuration(1500);
+
+            set = new AnimatorSet();
+            set.playSequentially(rotateUp, moveDown, rotateLeft, moveLeft, rotateDown, moveDownTwo, rotateLeftTwo, moveLeftTwo);
+            set.start();
+        }
     }
 }

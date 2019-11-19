@@ -35,7 +35,7 @@ public class LevelTwoEpisodeThree extends AppCompatActivity{
     int [] userSequence;
     //Left - 0; Up - 1; Down - 2; Right - 3
     //Down - Left - Up - Left
-    int [] correctSequence = new int[]{2, 0, 2, 0};
+    int [] correctSequence = new int[]{2, 0, 1, 0};
 
 
     ImageView back;
@@ -73,6 +73,7 @@ public class LevelTwoEpisodeThree extends AppCompatActivity{
         findViewById(R.id.firstStepImage).setOnDragListener(dragListener);
         findViewById(R.id.secondStepImage).setOnDragListener(dragListener);
         findViewById(R.id.thirdStepImage).setOnDragListener(dragListener);
+        findViewById(R.id.fourthStepImage).setOnDragListener(dragListener);
 
         //add or remove any view that you don't want to be dragged
         leftStep.setOnLongClickListener(longClickListener);
@@ -81,7 +82,6 @@ public class LevelTwoEpisodeThree extends AppCompatActivity{
         downStep.setOnLongClickListener(longClickListener);
 
         Reset();
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,7 +107,7 @@ public class LevelTwoEpisodeThree extends AppCompatActivity{
                                                     switch (which){
                                                         case DialogInterface.BUTTON_POSITIVE:
                                                             //Yes button clicked
-                                                            Intent i = new Intent(LevelTwoEpisodeThree.this, MainLoggedInDifficulty.class);
+                                                            Intent i = new Intent(LevelTwoEpisodeThree.this, MainLoggedInActivity.class);
                                                             startActivity(i);
                                                             break;
 
@@ -119,7 +119,7 @@ public class LevelTwoEpisodeThree extends AppCompatActivity{
                                             };
 
                                             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                                            builder.setMessage("Correct Sequence! Proceed to next level?").setPositiveButton("Yes", dialogClickListener)
+                                            builder.setMessage("Correct Sequence! Return to main menu?").setPositiveButton("Yes", dialogClickListener)
                                                     .setNegativeButton("No", dialogClickListener).show();
                                         }
                                     });
@@ -237,21 +237,27 @@ public class LevelTwoEpisodeThree extends AppCompatActivity{
 
     //Play the character movement animation
     private void PlayAnimation(){
-        ObjectAnimator rotateLeft = ObjectAnimator.ofFloat(player, "rotation", 270f);
+        //Down
+        ObjectAnimator moveDown = ObjectAnimator.ofFloat(player, "translationY", 540f);
+        moveDown.setDuration(1500);
+        //Left
+        ObjectAnimator rotateLeft = ObjectAnimator.ofFloat(player, "rotation", 90f);
         rotateLeft.setDuration(100);
-        ObjectAnimator moveLeft = ObjectAnimator.ofFloat(player, "translationX", -470f);
-        moveLeft.setDuration(1000);
-        ObjectAnimator rotateUp = ObjectAnimator.ofFloat(player, "rotation", 180f);
-        rotateUp.setDuration(100);
-        ObjectAnimator moveUp = ObjectAnimator.ofFloat(player, "translationY", -970f);
-        moveUp.setDuration(1000);
-        ObjectAnimator rotateRight = ObjectAnimator.ofFloat(player, "rotation", 270f);
-        rotateUp.setDuration(100);
-        ObjectAnimator moveRight = ObjectAnimator.ofFloat(player, "translationX", -200);
-        moveRight.setDuration(1000);
+        ObjectAnimator moveLeft = ObjectAnimator.ofFloat(player, "translationX", -1030f);
+        moveLeft.setDuration(4000);
+        //Up
+        ObjectAnimator rotateDown = ObjectAnimator.ofFloat(player, "rotation", 180f);
+        rotateDown.setDuration(100);
+        ObjectAnimator moveDownTwo = ObjectAnimator.ofFloat(player, "translationY", 350f);
+        moveDownTwo.setDuration(1500);
+        //Left
+        ObjectAnimator rotateLeftTwo = ObjectAnimator.ofFloat(player, "rotation", 90f);
+        rotateLeftTwo.setDuration(100);
+        ObjectAnimator moveLeftTwo = ObjectAnimator.ofFloat(player, "translationX", -1180f);
+        moveLeftTwo.setDuration(1500);
 
-        set  = new AnimatorSet();
-        set.playSequentially(rotateLeft, moveLeft, rotateUp, moveUp, rotateRight, moveRight);
+        set = new AnimatorSet();
+        set.playSequentially(moveDown, rotateLeft, moveLeft, rotateDown, moveDownTwo, rotateLeftTwo, moveLeftTwo);
         set.start();
     }
 }

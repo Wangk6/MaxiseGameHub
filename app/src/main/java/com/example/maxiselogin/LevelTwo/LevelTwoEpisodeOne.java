@@ -79,7 +79,6 @@ public class LevelTwoEpisodeOne extends AppCompatActivity{
         downStep.setOnLongClickListener(longClickListener);
 
         Reset();
-        PlayAnimation();
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -255,22 +254,22 @@ public class LevelTwoEpisodeOne extends AppCompatActivity{
     //Play the character movement animation
     private void PlayAnimation(){
         //Down
-        ObjectAnimator firstMove = ObjectAnimator.ofFloat(player, "translationY", 380f);
+        ObjectAnimator firstMove = ObjectAnimator.ofFloat(player, "translationY", 400f);
         firstMove.setDuration(1500);
         //Left
         ObjectAnimator rotateLeft = ObjectAnimator.ofFloat(player, "rotation", 90f);
         rotateLeft.setDuration(100);
-        ObjectAnimator secondMove = ObjectAnimator.ofFloat(player, "translationX", -290f);
+        ObjectAnimator secondMove = ObjectAnimator.ofFloat(player, "translationX", -330f);
         secondMove.setDuration(1500);
         //Down
         ObjectAnimator rotateDown = ObjectAnimator.ofFloat(player, "rotation", 0f);
         rotateDown.setDuration(100);
-        ObjectAnimator thirdMove = ObjectAnimator.ofFloat(player, "translationY", 800f);
+        ObjectAnimator thirdMove = ObjectAnimator.ofFloat(player, "translationY", 820f);
         thirdMove.setDuration(1500);
         //Down
         ObjectAnimator rotateRight = ObjectAnimator.ofFloat(player, "rotation", -90f);
         rotateRight.setDuration(100);
-        ObjectAnimator fourthMove = ObjectAnimator.ofFloat(player, "translationX", 50);
+        ObjectAnimator fourthMove = ObjectAnimator.ofFloat(player, "translationX", 0);
         fourthMove.setDuration(1500);
 
         set  = new AnimatorSet();

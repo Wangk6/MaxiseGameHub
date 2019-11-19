@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.maxiselogin.LevelOne.LevelOneEpisodeOne;
 import com.example.maxiselogin.LevelTwo.LevelTwoEpisodeOne;
+import com.example.maxiselogin.LevelTwo.LevelTwoEpisodeTwo;
 
 public class MainLoggedInDifficulty extends AppCompatActivity {
 

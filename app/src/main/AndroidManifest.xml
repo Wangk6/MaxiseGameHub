@@ -14,6 +14,11 @@
         <activity android:name=".MainLoggedInHighScore"></activity>
         <activity android:name=".MainLoggedInDifficulty"></activity>
         <activity android:name=".LevelOne.LevelOneEpisodeOne"></activity>
+        <activity android:name=".LevelOne.LevelOneEpisodeTwo"></activity>
+        <activity android:name=".LevelOne.LevelOneEpisodeThree"></activity>
+        <activity android:name=".LevelTwo.LevelTwoEpisodeOne"></activity>
+        <activity android:name=".LevelTwo.LevelTwoEpisodeTwo"></activity>
+        <activity android:name=".LevelTwo.LevelTwoEpisodeThree"></activity>
         <activity
             android:name=".LoginScreenActivity"
             android:label="@string/title_activity_login_screen"

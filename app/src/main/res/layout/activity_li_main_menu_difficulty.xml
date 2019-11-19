@@ -49,7 +49,7 @@
         android:id="@+id/txtMaxiseText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Maxise"
+        android:text="Difficulty"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="30dp"

@@ -2,13 +2,21 @@ package com.example.maxiselogin.LevelOne;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,31 +31,36 @@ import android.widget.TextView;
 import com.example.maxiselogin.MainLoggedInDifficulty;
 import com.example.maxiselogin.R;
 
+import java.util.Arrays;
+
 public class LevelOneEpisodeOne extends AppCompatActivity{
     //Character movements
-    Button left, up, down, right, execute;
+    ImageView leftStep, upStep, downStep, rightStep, execute;
     //Character
     ImageView player, firstStep, secondStep, thirdStep;
+    //Reset Button
+    Button reset;
     //Number of moves
-    TextView numMoves;
     int [] userSequence;
-    int [] correctSequence;
-    int numOfMoves;
-    int playerSetMove;
+    int [] correctSequence = new int[]{0, 1, 3};
     ImageView back;
+
+    //Animation
+    AnimatorSet set;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levelone1);
-        back = findViewById(R.id.prevPage);
 
+        back = findViewById(R.id.prevPage);
         player = findViewById(R.id.imageViewPlayer);
 
         //Movement buttons
-        left = findViewById(R.id.btnleft);
-        down = findViewById(R.id.btnDown);
-        right = findViewById(R.id.btnRight);
-        up = findViewById(R.id.btnUp);
+        leftStep = findViewById(R.id.btnleft);
+        downStep = findViewById(R.id.btnDown);
+        rightStep = findViewById(R.id.btnRight);
+        upStep = findViewById(R.id.btnUp);
 
         //Sequence box
         firstStep = findViewById(R.id.firstStepImage);
@@ -57,23 +70,22 @@ public class LevelOneEpisodeOne extends AppCompatActivity{
         //Execute Button
         execute = findViewById(R.id.btnExecute);
 
-        numMoves = findViewById(R.id.textViewNumbOfMoves);
-        playerSetMove = 0;
+        //Reset Button
+        reset = findViewById(R.id.btnReset);
 
         //add or remove any layout view that you don't want to accept dragged view
-        findViewById(R.id.firstStep).setOnDragListener(dragListener);
-        findViewById(R.id.secondStep).setOnDragListener(dragListener);
-        findViewById(R.id.thirdStep).setOnDragListener(dragListener);
+        findViewById(R.id.firstStepImage).setOnDragListener(dragListener);
+        findViewById(R.id.secondStepImage).setOnDragListener(dragListener);
+        findViewById(R.id.thirdStepImage).setOnDragListener(dragListener);
 
         //add or remove any view that you don't want to be dragged
-        left.setOnLongClickListener(longClickListener);
-        up.setOnLongClickListener(longClickListener);
-        right.setOnLongClickListener(longClickListener);
-        down.setOnLongClickListener(longClickListener);
-
+        leftStep.setOnLongClickListener(longClickListener);
+        upStep.setOnLongClickListener(longClickListener);
+        rightStep.setOnLongClickListener(longClickListener);
+        downStep.setOnLongClickListener(longClickListener);
 
         Reset();
-        correctSequence = new int[]{0, 1, 4};
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,18 +94,63 @@ public class LevelOneEpisodeOne extends AppCompatActivity{
             }
         });
 
-        //Left = 0; Up = 1; Down = 2; Right = 3
-//        left.setOnClickListener(new View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(View view) {
-//                if(numOfMoves != 0) {
-//                    SetUserSequence(0);
-//                    UpdateNumberOfMovesLeft();
-//                    PlayAnimation();
-//                }
-//            }
-//        });
+        execute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean check = CheckForSequence();
+                //If user sequence is == correct sequence, proceed
+                if(check == true){
+                    //Correct
+                    PlayAnimation();
+                    set.addListener(new AnimatorListenerAdapter() {
+                                        @Override
+                                        public void onAnimationEnd(Animator animation) {
+                                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    switch (which){
+                                                        case DialogInterface.BUTTON_POSITIVE:
+                                                            //Yes button clicked
+                                                            Intent i = new Intent(LevelOneEpisodeOne.this, LevelOneEpisodeTwo.class);
+                                                            startActivity(i);
+                                                            break;
+
+                                                        case DialogInterface.BUTTON_NEGATIVE:
+                                                            //No button clicked
+                                                            break;
+                                                    }
+                                                }
+                                            };
+
+                                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                                            builder.setMessage("Correct Sequence! Proceed to next level?").setPositiveButton("Yes", dialogClickListener)
+                                                    .setNegativeButton("No", dialogClickListener).show();
+                                        }
+                                    });
+
+                }else {
+                    //Incorrect
+                    // setup the alert builder
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    builder.setTitle("Try Again");
+                    builder.setMessage("Sequence was incorrect!");
+
+                    // add a button
+                    builder.setPositiveButton("OK", null);
+
+                    // create and show the alert dialog
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            }
+        });
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Reset();
+            }
+        });
     }
 
     View.OnLongClickListener longClickListener = new View.OnLongClickListener() {
@@ -112,40 +169,18 @@ public class LevelOneEpisodeOne extends AppCompatActivity{
 
     View.OnDragListener dragListener = new View.OnDragListener() {
         @Override
-        public boolean onDrag(View view, DragEvent event) {
+        public boolean onDrag(View v, DragEvent event) {
             int dragEvent = event.getAction();
 
             switch (dragEvent){
                 case DragEvent.ACTION_DRAG_ENTERED:
                     break;
-                 case DragEvent.ACTION_DRAG_EXITED:
-                    break;
                 case DragEvent.ACTION_DROP:
-                    final View v = (View) event.getLocalState();
-                    if(v.getId() == R.id.btnleft){ //Dragged left button
-                        SetUserSequence(0);
-                        UpdateNumberOfMovesLeft();
-                    }
-                    else if(v.getId() == R.id.btnUp){
-                        SetUserSequence(1);
-                        UpdateNumberOfMovesLeft();
-                    }
-                    else if(v.getId() == R.id.btnDown){
-                        SetUserSequence(2);
-                        UpdateNumberOfMovesLeft();
-                    }
-                    else if(v.getId() == R.id.btnRight){
-                        SetUserSequence(3);
-                        UpdateNumberOfMovesLeft();
-                    }
-
-                    LinearLayout container = (LinearLayout) view;
-
-                    LinearLayout lay = container;
-                    View ve = (View) event.getLocalState();
-                    ViewGroup owner = (ViewGroup) v.getParent();
-                    owner.removeView(v);//remove the dragged view
-                    lay.addView(ve);
+                    // Invalidates the view to force a redraw
+                    v.invalidate();
+                    View view = (View) event.getLocalState();
+                    ((ImageView) v).setImageDrawable( ((ImageView)view).getBackground());
+                    view.setVisibility(View.VISIBLE);
                     break;
             }
 
@@ -153,81 +188,85 @@ public class LevelOneEpisodeOne extends AppCompatActivity{
         }
     };
 
+    //Reset image boxes and sequence
     private void Reset(){
-        numOfMoves = 3;
+        userSequence = null;
+        firstStep.setImageDrawable(null);
+        secondStep.setImageDrawable(null);
+        thirdStep.setImageDrawable(null);
+    }
+
+    //Used to see if the users sequence is correct
+    private boolean CheckForSequence(){
         userSequence = new int[3];
-        numMoves.setText(String.valueOf(numOfMoves));
-    }
 
-    //Decrease number of moves by 1
-    private void UpdateNumberOfMovesLeft(){
-        numOfMoves--;
-        numMoves.setText(String.valueOf(numOfMoves));
-    }
+        Drawable step;
+        Drawable left = leftStep.getBackground();
+        Drawable up = upStep.getBackground();
+        Drawable down = downStep.getBackground();
+        Drawable right = rightStep.getBackground();
 
-    private void SetUserSequence(int move){
-        switch(numOfMoves){
-            case 3:
-                userSequence[0] = move;
-                if(move == 0) {
-                    firstStep.setImageResource(R.drawable.arrowleft);
-                }else if(move == 1){
-                    firstStep.setImageResource(R.drawable.arrowup);
-                }else if(move == 2){
-                    firstStep.setImageResource(R.drawable.arrowdown);
-                }else if(move == 3){
-                    firstStep.setImageResource(R.drawable.arrowright);
-                }
-                break;
-            case 2:
-                userSequence[1] = move;
-                if(move == 0) {
-                    secondStep.setImageResource(R.drawable.arrowleft);
-                }else if(move == 1){
-                    secondStep.setImageResource(R.drawable.arrowup);
-                }else if(move == 2){
-                    secondStep.setImageResource(R.drawable.arrowdown);
-                }else if(move == 3){
-                    secondStep.setImageResource(R.drawable.arrowright);
-                }
-                break;
-            case 1:
-                userSequence[2] = move;
-                if(move == 0) {
-                    thirdStep.setImageResource(R.drawable.arrowleft);
-                }else if(move == 1){
-                    thirdStep.setImageResource(R.drawable.arrowup);
-                }else if(move == 2){
-                    thirdStep.setImageResource(R.drawable.arrowdown);
-                }else if(move == 3){
-                    thirdStep.setImageResource(R.drawable.arrowright);
-                }
-                break;
-             default:
-                 break;
+        for(int i = 0; i < correctSequence.length; i++) {
+
+            //Get user sequence
+            if(i == 0){
+                //step = findViewById(R.id.firstStepImage);
+                step = firstStep.getDrawable();
+                //step = ((BitmapDrawable)firstStep.getDrawable()).getBitmap();
+            }
+            else if(i == 1){
+                //step = findViewById(R.id.secondStepImage);
+
+                step = secondStep.getDrawable();
+
+                //step = ((BitmapDrawable)secondStep.getDrawable()).getBitmap();
+            }
+            else if(i == 2){
+                //step = findViewById(R.id.thirdStepImage);
+
+                step = thirdStep.getDrawable();
+
+                //step = ((BitmapDrawable)thirdStep.getDrawable()).getBitmap();
+            }
+            else{
+                step = null;
+            }
+
+            //Set user sequence
+            if(step == left) {
+                userSequence[i] = 0;
+            }
+            else if(step == up){
+                userSequence[i] = 1;
+            }
+            else if(step == down){
+                userSequence[i] = 2;
+            }
+            else if(step == right){
+                userSequence[i] = 3;
+            }
         }
 
+        return Arrays.equals(userSequence, correctSequence) ? true : false;
     }
 
+    //Play the character movement animation
     private void PlayAnimation(){
         ObjectAnimator rotateLeft = ObjectAnimator.ofFloat(player, "rotation", 90f);
         rotateLeft.setDuration(100);
         ObjectAnimator moveLeft = ObjectAnimator.ofFloat(player, "translationX", -470f);
-        moveLeft.setDuration(1000);
+        moveLeft.setDuration(1500);
         ObjectAnimator rotateUp = ObjectAnimator.ofFloat(player, "rotation", 180f);
         rotateUp.setDuration(100);
         ObjectAnimator moveUp = ObjectAnimator.ofFloat(player, "translationY", -970f);
-        moveUp.setDuration(1000);
+        moveUp.setDuration(1500);
         ObjectAnimator rotateRight = ObjectAnimator.ofFloat(player, "rotation", 270f);
         rotateUp.setDuration(100);
         ObjectAnimator moveRight = ObjectAnimator.ofFloat(player, "translationX", -200);
-        moveRight.setDuration(1000);
+        moveRight.setDuration(1500);
 
-        AnimatorSet set  = new AnimatorSet();
+        set  = new AnimatorSet();
         set.playSequentially(rotateLeft, moveLeft, rotateUp, moveUp, rotateRight, moveRight);
         set.start();
     }
-
-
-
 }

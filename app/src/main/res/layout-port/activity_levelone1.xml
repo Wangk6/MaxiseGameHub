@@ -71,61 +71,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/firstStep"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:background="#56FFFFFF"
-            android:orientation="vertical"
+        <ImageView
+            android:id="@+id/thirdStepImage"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="23dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/prevPage"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.478">
+            app:layout_constraintEnd_toStartOf="@+id/btnReset"
+            app:layout_constraintStart_toEndOf="@+id/firstStepImage"
+            android:background="@drawable/userstepbox"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/firstStepImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/layout_topcurve" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/secondStep"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="36dp"
-            android:background="#56FFFFFF"
-            android:orientation="vertical"
+        <ImageView
+            android:id="@+id/secondStepImage"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/firstStep"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.478" >
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/userstepbox"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/secondStepImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/layout_topcurve" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/thirdStep"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="#56FFFFFF"
-            android:orientation="vertical"
+        <ImageView
+            android:id="@+id/firstStepImage"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="93dp"
+            android:layout_marginEnd="108dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toEndOf="@+id/secondStep"
-            app:layout_constraintTop_toTopOf="parent" >
-
-            <ImageView
-                android:id="@+id/thirdStepImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/layout_topcurve" />
-        </LinearLayout>
+            app:layout_constraintEnd_toStartOf="@+id/thirdStepImage"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/userstepbox"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -143,30 +121,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/whitebackarrow" />
 
-        <ImageView
-            android:id="@+id/stepsImage"
-            android:layout_width="50dp"
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/textViewNumbOfMoves"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="7dp"
+            android:background="@drawable/reset"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/thirdStepImage"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/footstep" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textViewNumbOfMoves"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="4dp"
-            android:text="1"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -179,7 +146,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <ImageView
             android:id="@+id/btnExecute"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="75dp"
@@ -191,7 +158,7 @@
             app:layout_constraintStart_toEndOf="@+id/btnRight"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <ImageView
             android:id="@+id/btnRight"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="60dp"
@@ -202,7 +169,7 @@
             app:layout_constraintStart_toEndOf="@+id/btnDown"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <ImageView
             android:id="@+id/btnleft"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="60dp"
@@ -213,7 +180,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <ImageView
             android:id="@+id/btnUp"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="60dp"
@@ -224,14 +191,14 @@
             app:layout_constraintStart_toEndOf="@+id/btnleft"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <ImageView
             android:id="@+id/btnDown"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/arrowleft"
+            android:background="@drawable/arrowdown"
             app:layout_constraintStart_toEndOf="@+id/btnUp"
             app:layout_constraintTop_toTopOf="parent" />
 

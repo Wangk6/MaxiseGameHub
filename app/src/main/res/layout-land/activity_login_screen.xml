@@ -12,7 +12,7 @@
         android:layout_height="350dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        tools:context=".LoginScreenActivity">
+        tools:context=".BeforeLogin.LoginScreenActivity">
 
         <ImageView
             android:id="@+id/imageView"

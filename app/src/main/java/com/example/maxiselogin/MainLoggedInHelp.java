@@ -1,18 +1,20 @@
 package com.example.maxiselogin;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.maxiselogin.ParentView.MainLoggedInActivity;
+import com.example.maxiselogin.R;
+
 public class MainLoggedInHelp extends AppCompatActivity {
     TextView ruleOne, ruleTwo, ruleThree, ruleFour;
-    String ruleOneText = "1. Multiple choice answers require the user to pick the correct answer to proceed";
-    String ruleTwoText = "2. Some questions may have multiple answers and the user must pick the correct answers to proceed";
-    String ruleThreeText = "3. Questions may have timers which require the user to pick a choice before it runs to 0";
+    String ruleOneText = "1. Drag and drop the correct path order to proceed";
+    String ruleTwoText = "2. Click 'Go' to test your answer";
+    String ruleThreeText = "3. Level One (10pts) - Level Two (20pts)";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

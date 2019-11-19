@@ -9,21 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainLoggedInActivity"></activity>
+        <activity android:name=".ParentView.MainLoggedInActivity"></activity>
         <activity android:name=".MainLoggedInHelp"></activity>
-        <activity android:name=".MainLoggedInHighScore"></activity>
-        <activity android:name=".MainLoggedInDifficulty"></activity>
-        <activity android:name=".LevelOne.LevelOneEpisodeOne"></activity>
-        <activity android:name=".LevelOne.LevelOneEpisodeTwo"></activity>
-        <activity android:name=".LevelOne.LevelOneEpisodeThree"></activity>
-        <activity android:name=".LevelTwo.LevelTwoEpisodeOne"></activity>
-        <activity android:name=".LevelTwo.LevelTwoEpisodeTwo"></activity>
-        <activity android:name=".LevelTwo.LevelTwoEpisodeThree"></activity>
+        <activity android:name=".ParentView.MainLoggedInHighScore"></activity>
+        <activity android:name=".ParentView.MainLoggedInDifficulty"></activity>
+        <activity android:name=".ChildView.LevelOne.LevelOneEpisodeOne"></activity>
+        <activity android:name=".ChildView.LevelOne.LevelOneEpisodeTwo"></activity>
+        <activity android:name=".ChildView.LevelOne.LevelOneEpisodeThree"></activity>
+        <activity android:name=".ChildView.LevelTwo.LevelTwoEpisodeOne"></activity>
+        <activity android:name=".ChildView.LevelTwo.LevelTwoEpisodeTwo"></activity>
+        <activity android:name=".ChildView.LevelTwo.LevelTwoEpisodeThree"></activity>
+        <activity android:name=".ParentView.LevelOne.LevelOneEpisodeOne"></activity>
+        <activity android:name=".ParentView.LevelOne.LevelOneEpisodeTwo"></activity>
+        <activity android:name=".ParentView.LevelOne.LevelOneEpisodeThree"></activity>
+        <activity android:name=".ParentView.LevelTwo.LevelTwoEpisodeOne"></activity>
+        <activity android:name=".ParentView.LevelTwo.LevelTwoEpisodeTwo"></activity>
+        <activity android:name=".ParentView.LevelTwo.LevelTwoEpisodeThree"></activity>
+        <activity android:name=".ChildView.MainLoggedInDifficulty"></activity>
+        <activity android:name=".ChildView.MainLoggedInActivity"></activity>
         <activity
-            android:name=".LoginScreenActivity"
+            android:name=".BeforeLogin.LoginScreenActivity"
             android:label="@string/title_activity_login_screen"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".BeforeLogin.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

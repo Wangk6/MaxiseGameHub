@@ -17,8 +17,8 @@
 //import androidx.annotation.Nullable;
 //import androidx.fragment.app.Fragment;
 //
-//import com.example.maxiselogin.HighScore;
-//import com.example.maxiselogin.MainLoggedInActivity;
+//import com.example.maxiselogin.ParentView.HighScore;
+//import com.example.maxiselogin.ParentView.MainLoggedInActivity;
 //import com.example.maxiselogin.MainLoggedInStart;
 //import com.example.maxiselogin.R;
 //

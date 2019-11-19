@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:screenOrientation="portrait"
-    android:background="@drawable/bg3_4_2500"
-    tools:context=".LevelTwo.LevelTwoEpisodeOne">
+    android:background="@drawable/bg3_4_2500">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mapConstraint"
